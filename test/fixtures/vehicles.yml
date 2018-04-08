@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_size: one
+  year: 1
+  make: MyString
+  model: MyString
+  vin: MyString
+
+two:
+  vehicle_size: two
+  year: 1
+  make: MyString
+  model: MyString
+  vin: MyString
