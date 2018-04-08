@@ -1,6 +1,21 @@
 class VehiclesController < ApplicationController
     def index
-        @vehicles = Vehicle.all
+        
+        if request.xhr?
+            if params[:search_string] == 'size'
+                params[:search_string] = 'vehicle_size_id'
+            end
+
+            if params[:backwards] == "true"
+                @vehicles = Vehicle.order(params[:search_string] => :desc)
+            else 
+                @vehicles = Vehicle.order(params[:search_string])
+            end
+            render partial: 'vehicles/partials/vehicle_rows', locals: {vehicles: @vehicles}
+            
+        else
+            @vehicles = Vehicle.order(:make)
+        end
     end
 
     def new

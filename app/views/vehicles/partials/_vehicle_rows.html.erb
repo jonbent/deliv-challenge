@@ -1,0 +1,15 @@
+<% vehicles.each do |v| %>
+    <tr>
+        <td><%= v.make %></td>
+        <td><%= v.model %></td>
+        <td><%= v.year %></td>
+        <td><%= v.vehicle_size.name %></td>
+        <td><%= v.vin %></td>
+        <%#  %>
+        <td>
+            <%= link_to vehicle_reviews_path(v), class: 'btn-floating btn-small waves-effect waves-light orange' do %>
+                <i class='material-icons'>add</i>
+            <% end %>
+        </td>
+    </tr>
+<% end %>

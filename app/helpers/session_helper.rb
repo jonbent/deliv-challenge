@@ -5,4 +5,8 @@ module SessionHelper
 
     state
   end
+
+  def logged_in?
+    return session[:userinfo].present?
+  end
 end

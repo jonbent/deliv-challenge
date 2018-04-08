@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ .v-headers{
+     background-color: #FFF;
+ }
+ .details-down{
+     opacity: 0.6;
+ }

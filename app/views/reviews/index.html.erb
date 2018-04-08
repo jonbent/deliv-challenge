@@ -1,0 +1,47 @@
+<%# if !@user_reviews && !@reviews %>
+
+<%# end %>
+
+<% if @user_reviews.count > 0
+p @user_reviews %>
+    <div class="col s12 center-align">
+        <h1>Your Reviews<h1>
+        <div class="divider"></div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Rating</th>
+                <th>User</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody class="collection">
+            <%= render partial: 'reviews/partials/review_rows', locals: {reviews: @user_reviews} %>
+        </tbody>
+    </table>
+<% end %>
+<% if @reviews.count > 0 
+p @reviews.count %>
+    <div class="col s12 center-align">
+        <h1>All Reviews<h1>
+        <div class="divider"></div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Rating</th>
+                <th>User</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody class="collection">
+            <%= render partial: 'reviews/partials/review_rows', locals: {reviews: @reviews} %>
+        </tbody>
+    </table>
+<% end %>
+<script>
+    loadRatings();
+</script>

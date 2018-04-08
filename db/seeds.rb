@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Vehicle.destroy_all()
 VehicleSize.destroy_all()
 small = VehicleSize.create(name: 'Small')
 med = VehicleSize.create(name: 'Average')
@@ -30,12 +31,15 @@ def self.create_vehicle(args)
         make: args.make,
         model: args.model,
         vin: args.vin,
+        trim: args.trim,
+        color: args.exterior_colors[0],
         vehicle_size: size,
     })
     return v.vehicle_size
 end
 
 # seeding 100 cars because if I were to do this each time I wanted to generate a list of cars the output(cars) would change.
+
 100.times do |index|
     v = Vinbot::Vehicle.new
     create_vehicle(v)

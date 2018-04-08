@@ -1,0 +1,19 @@
+
+<div style="width:100%;">
+    <table class="responsive-table centered highlight vehicle-table">
+        <thead class="v-headers">
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Size</th>
+                <th>VIN</th>
+                <th>Review</th>
+            </tr>
+        </thead>
+
+        <tbody class="v-container">
+            <%= render partial: 'vehicles/partials/vehicle_rows', locals: {vehicles: @vehicles} %>
+        </tbody>
+    </div>
+</div>

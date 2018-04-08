@@ -1,0 +1,9 @@
+
+<% reviews.each do |r| %>
+    <tr id="review--<%=r.id%>" class="collection-item review-item">
+        <td><div class="valign-wrapper"><i class="material-icons details-down">details</i></div></td>
+        <td><div class="review-rating" value="<%= r.rating %>"></div></td>
+        <td><div><%= r.email %></div></td>
+        <td><div><%= r.created_at.strftime("%m-%d-%Y") %></div></td>
+    </tr>
+<% end %>

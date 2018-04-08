@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407223337) do
+ActiveRecord::Schema.define(version: 20180408073309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "vehicle_id"
+    t.string "email"
+    t.float "rating"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vehicle_id"], name: "index_reviews_on_vehicle_id"
+  end
 
   create_table "vehicle_sizes", force: :cascade do |t|
     t.string "name"
@@ -29,8 +39,11 @@ ActiveRecord::Schema.define(version: 20180407223337) do
     t.string "vin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
+    t.string "trim"
     t.index ["vehicle_size_id"], name: "index_vehicles_on_vehicle_size_id"
   end
 
+  add_foreign_key "reviews", "vehicles"
   add_foreign_key "vehicles", "vehicle_sizes"
 end

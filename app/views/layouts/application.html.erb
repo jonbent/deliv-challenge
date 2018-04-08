@@ -3,28 +3,46 @@
   <head>
     <title>DelivChallenge</title>
     <%= csrf_meta_tags %>
+    <%# jquery %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <%# star ratings %>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <%# fixed table headers %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.1.1/jquery.floatThead.min.js"></script>
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a class="brand-logo left" href="/">Cars R Us</a>
-        <ul id="nav-mobile" class="right">
-          <li><a href="/auth/auth0">Login</a></li>
-          
-        </ul>
-        
-        
-      </div>
-    </nav>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a class="brand-logo left" href="/">Cars R Us</a>
+          <ul id="nav-mobile" class="right">
+            <li><a href="/vehicles">Vehicles</a></li>
+            <% if logged_in?() %>
+              <li><a href="/logout">Logout</a></li>
+            <% else %>
+              <li><a href="/auth/auth0">Login / Register</a></li>
+            <% end %>
+          </ul>
+
+
+        </div>
+      </nav>
+    </div>
     <%= yield %>
   </body>
 </html>

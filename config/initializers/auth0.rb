@@ -1,10 +1,10 @@
-audience = "https://" + ENV['__AUTH0_NAMESPACE__'] + "/userinfo"
+audience = "https://" + Rails.application.secrets.auth0_domain + "/userinfo"
 Rails.application.config.middleware.use OmniAuth::Builder do
     provider(
         :auth0,
-        ENV['__AUTH0_CLIENT_ID__'],
-        ENV['__AUTH0_CLIENT_SECRET__'],
-        ENV['__AUTH0_NAMESPACE__'],
+        Rails.application.secrets.auth0_id,
+        Rails.application.secrets.auth0_secret,
+        Rails.application.secrets.auth0_domain,
         callback_path: "/auth/oauth2/callback",
         authorize_params: {
             scope: 'openid profile',
