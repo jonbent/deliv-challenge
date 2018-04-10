@@ -49,6 +49,15 @@ class ReviewsController < ApplicationController
             render :edit
         end
     end
+
+    def destroy
+        @review = Review.find(params[:id])
+        if @review.destroy
+            redirect_to vehicle_reviews_path(@vehicle)
+        else
+            render :index
+        end
+    end
     private
 
     def review_params
