@@ -21,7 +21,7 @@
     <% if !@user_reviews.empty? %>
             <thead>
                 <tr>
-                    <td colspan=4>
+                    <td colspan=5>
                         <div class="center-align">
                         
                             <h1>Your Reviews<h1>
@@ -36,6 +36,7 @@
                     <th></th>
                     <th>Rating</th>
                     <th>User</th>
+                    <th>VIN</th>
                     <th>Created</th>
                 </tr>
             </thead>
@@ -51,9 +52,12 @@
         </tbody> %>
             <thead>
                 <tr>
-                    <td colspan=4>
+                    <td colspan=5>
                         <div class="col s12 center-align">
                             <h1>All Reviews<h1>
+                            <% if @vehicle && @user_reviews.empty? %>
+                                <%= link_to 'Add Review', new_vehicle_review_path(@vehicle), class: 'waves-effect waves-light btn' %>
+                            <% end %>
                         </div>
                     </td>
                 </tr>
@@ -61,6 +65,7 @@
                     <th></th>
                     <th>Rating</th>
                     <th>User</th>
+                    <th>VIN</th>
                     <th>Created</th>
                 </tr>
             </thead>

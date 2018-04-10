@@ -9,4 +9,9 @@ module SessionHelper
   def logged_in?
     return session[:userinfo].present?
   end
+
+  def user_email
+    return session[:userinfo]['info']['name']
+  end
+  
 end

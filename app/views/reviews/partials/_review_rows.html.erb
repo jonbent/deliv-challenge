@@ -5,10 +5,11 @@
             <td><div class="valign-wrapper"><%= r.comment.presence ? sanitize('<i class="material-icons details-down">details</i>') : '' %></div></td>
             <td><div class="review-rating-ue" value="<%= r.rating %>"></div></td>
             <td><div><%= r.email %></div></td>
+            <td><div><%= r.vehicle.vin %></div></td>
             <td><div><%= r.created_at.strftime("%m-%d-%Y") %></div></td>
         </tr>
         <tr class="review-bot review-item">
-            <td colspan=4>
+            <td colspan=5>
                 
                 <% if r.comment.presence %>
                     <div id="review-details--<%=r.id%>" class="hide review-item-details">
@@ -28,7 +29,7 @@
                                         Year: <%= r.vehicle.year %>
                                     </div>    
                                     <div class='col s6'>
-                                        VIN: <%= r.vehicle.vin %>
+                                        Color: <%= r.vehicle.color %>
                                     </div>    
                                 </div>    
                             </div>    
@@ -43,7 +44,12 @@
                                         <%= r.comment %>        
                                     </div>    
                                 </div>    
-                            </div>    
+                            </div>
+                            <% if logged_in? && r.current_users?(user_email) %>
+                                <div class='input-field col s12'>
+                                    <%= link_to sanitize('<i class="material-icons right">send</i>' + "Edit"), edit_vehicle_review_path(r.vehicle, r), class: 'btn waves-effect waves-light' %>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 <% end %>

@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+    include Secured
+    skip_before_action :logged_in_using_omniauth?, only: [:index]
     def index
         @user_reviews = []
         user_email = ''
@@ -24,17 +26,32 @@ class ReviewsController < ApplicationController
         @review = Review.new()
     end
     def create
-        include Secured
         @vehicle = Vehicle.find(params[:vehicle_id])
         @review = Review.new(review_params)
         @review.email = session[:userinfo]["info"]["name"]
-        @review.save
-
+        if @review.save
+            redirect_to vehicle_reviews_path(@vehicle)
+        else
+            render :new
+        end
     end
-
+    
+    def edit
+        @vehicle = Vehicle.find(params[:vehicle_id])
+        @review = Review.find(params[:id])
+    end
+    def update
+        @vehicle = Vehicle.find(params[:vehicle_id])
+        @review = Review.find(params[:id])
+        if @review.update(review_params)
+            redirect_to vehicle_reviews_path(@vehicle)
+        else 
+            render :edit
+        end
+    end
     private
 
     def review_params
-        params.permit(:comment, :rating)
+        params.permit(:comment, :rating, :vehicle_id)
     end
 end

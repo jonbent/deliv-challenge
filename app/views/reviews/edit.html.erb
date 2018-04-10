@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+<div class='row'>
+    <%= form_tag vehicle_review_path(@vehicle, @review), method: :put, class: 'col s8 offset-s2 review-form z-depth-5 teal-text text-lighten-2' do %>
+        <div class='row center-align'>
+            <div class='input-field col s12'>
+                <div class=''><h5>Rating*</h5></div>
+                <div class="review-rating-new rateYo-centered" value="<%= @review.rating %>"></div>
+                <%= hidden_field_tag 'rating', @review.rating %>
+            </div>
+            <div class='input-field col s12'>
+                <div class=''><h5>Comment</h5></div>
+                <%= text_area_tag 'comment', @review.comment , class: 'materialize-textarea' %>
+            </div>
+            <div class='input-field col s12 required-explain'>
+                <i>*Required</i>
+            </div>
+            <div class='input-field col s12'>
+                <%= button_tag sanitize('<i class="material-icons right">send</i>' + "Submit"), class: 'btn waves-effect waves-light' %>
+            </div>
+            
+        </div>
+    <% end %>
+    
+</div>
+<script>
+    loadRatings();
+</script>
