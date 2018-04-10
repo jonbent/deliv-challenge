@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.v-headers{
+    background-color: #FFF;
+}
+.details-down{
+    cursor: pointer;
+    opacity: 0.6;
+}
+.review-bot > td{
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.div-table {
+  display: table;         
+  width: auto;         
+  background-color: #eee;         
+  border: 1px solid #666666;         
+  border-spacing: 5px; /* cellspacing:poor IE support for  this */
+}
+.div-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+.div-table-col {
+  float: left; /* fix for  buggy browsers */
+  display: table-column;         
+  width: 200px;         
+  background-color: #ccc;  
+}
+.review-table, .review-table-body{
+    border-bottom: 0px;
+}
+
+.rateYo-centered{
+    margin: 0 auto;
+}
+.review-form{
+    background-color: #424651;
+}
+.review-form textarea{
+    background-color: #424651;
+    color: #4db6ac;
+}
+.col.s12 > .btn {
+   width: 100%;
+}
+.required-explain{
+    font-size:10px;
+}
+.review-table-body > tr{
+    border-bottom: 0px;
+}
+.review-bot{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+.vehicle-info {
+    // border-radius: 1px; /* Border on the of review info */
+    border-right: 1px solid rgba(0,0,0,0.3);
+}

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+require 'faker'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -64,3 +65,9 @@ gem 'vinbot'
 # auth0
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-auth0', '~> 2.0.0'
+
+# materialize
+gem 'materialize-sass', '~> 1.0.0.beta'
+
+# generate emails
+gem 'faker'

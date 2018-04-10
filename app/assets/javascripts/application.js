@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require materialize
 
 function setColors() {
     var vehicles = $('.vehicle-container');
@@ -38,39 +39,56 @@ function addUpNaNString(st){
 
 // load stars on review index
 function loadRatings() {
-    var ratings = $(".review-rating")
-    for (var i = 0; i < ratings.length; i++) {
-        var rating = $(ratings[i])
+    var uneditableRatings = $(".review-rating-ue")
+    for (var i = 0; i < uneditableRatings.length; i++) {
+        var rating = $(uneditableRatings[i]);
         rating.rateYo({
             rating: rating.attr('value'),
             readOnly: true
+        }).on('rateyo.set', function (e, data) {
+            $(this).attr('value', data.rating);
+            $(this).next().val(data.rating);
+        });
+    }
+    var ratings = $(".review-rating-new")
+    for (var i = 0; i < ratings.length; i++) {
+        var rating = $(ratings[i])
+        rating.rateYo({
+            rating: rating.attr('value')
+        }).on('rateyo.set', function (e, data) {
+            $(this).attr('value', data.rating);
+            $(this).next().val(data.rating);
         });
     }
 }
 
-var currentSearch = "make"
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
+    console.log('ready');
+    var currentSearch = "make"
+    var searchVehicleBackwards = false
     // create fixed table headers
-    console.log($('.navbar-fixed').css("height"));
     $('table.vehicle-table').floatThead({
         position: 'fixed',
         scrollingTop: $('.navbar-fixed').height(),
         top: $('.navbar-fixed').height(),
         scrollContainer: true,
-
+        
     });
     // get vehicles based on search condition
     $('body').on('click', '.v-headers > tr > th', function(e){
+        console.log(searchVehicleBackwards);
         var url = window.location.origin + '/vehicles';
         var data = new Object;
-        var method = 'GET'
+        var method = 'GET';
         data.search_string = $(this).html().toLowerCase();
-        if (currentSearch == data.search_string){
-            data.backwards = "true"
+        if (currentSearch == data.search_string && !searchVehicleBackwards){
+            data.backwards = "true";
+            searchVehicleBackwards = true;
         } else {
-            data.backwards = "false"
+            data.backwards = "false";
+            searchVehicleBackwards = false;
         }
-        currentSearch = data.search_string
+        currentSearch = data.search_string;
         $.ajax({
             url: url,
             data: data,
@@ -79,5 +97,27 @@ $(document).ready(function () {
             $('.v-container').html(res);
         })
     })
-    
+
+    // show review content on click
+    $('body').on('click', '.review-item', function(e){
+        var id = $(this).attr('id').replace('review--', '');
+        var details = $('#review-details--' + id);
+        var hasClass = details.hasClass('hide')
+        $('.review-item-details').addClass('hide');
+        if (hasClass) {
+            details.removeClass('hide');
+        } else {
+            details.addClass('hide');
+        }
+    })
+
+    //submit rating
+    $('body').on('submit', '.review-form', function(e){
+        if ($('input[name="rating"]').val()){
+            return true;
+        } else {
+            e.preventDefault();
+            M.toast({ html: 'Please at least leave a rating' });
+        }
+    })
 })

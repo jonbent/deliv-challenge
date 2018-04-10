@@ -2,46 +2,74 @@
 
 <%# end %>
 
-<% if @user_reviews.count > 0
-p @user_reviews %>
-    <div class="col s12 center-align">
-        <h1>Your Reviews<h1>
-        <div class="divider"></div>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Rating</th>
-                <th>User</th>
-                <th>Created</th>
+<div class='center-align'>
+    <% if @user_reviews.empty? && @user_reviews.empty? && @reviews.empty?%>
+        <% if @vehicle %>
+            <h4>Be the first to Review this car!</h4>
+            <% if logged_in?() %>
+                <%= link_to 'Add Review', new_vehicle_review_path(@vehicle), class: 'waves-effect waves-light btn' %>
+            <% else %>
+                <p>Please log in to do so.</p>
+            <% end %>
+        <% else %>
+            <h4>There are no reviews existing in the database</h4>
+            <p>Why dont you leave one <%= link_to 'here', vehicles_path %></p>
+        <% end %>
+    <% end %>
+</div>
+<table class="review-table">
+    <% if !@user_reviews.empty? %>
+            <thead>
+                <tr>
+                    <td colspan=4>
+                        <div class="center-align">
+                        
+                            <h1>Your Reviews<h1>
+                            
+                            <% if @vehicle%>
+                                <%= link_to 'Add Review', new_vehicle_review_path(@vehicle), class: 'waves-effect waves-light btn' %>
+                            <% end %>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Rating</th>
+                    <th>User</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody class="collection review-table-body">
+                <%= render partial: 'reviews/partials/review_rows', locals: {reviews: @user_reviews} %>
+            </tbody>
+    <% end %>
+    <% if !@reviews.empty? %>
+        <%# <tbody class="collection review-table-body">
+            <tr class="review-bot review-item">
+                
             </tr>
-        </thead>
-        <tbody class="collection">
-            <%= render partial: 'reviews/partials/review_rows', locals: {reviews: @user_reviews} %>
-        </tbody>
-    </table>
-<% end %>
-<% if @reviews.count > 0 
-p @reviews.count %>
-    <div class="col s12 center-align">
-        <h1>All Reviews<h1>
-        <div class="divider"></div>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Rating</th>
-                <th>User</th>
-                <th>Created</th>
-            </tr>
-        </thead>
-        <tbody class="collection">
-            <%= render partial: 'reviews/partials/review_rows', locals: {reviews: @reviews} %>
-        </tbody>
-    </table>
-<% end %>
+        </tbody> %>
+            <thead>
+                <tr>
+                    <td colspan=4>
+                        <div class="col s12 center-align">
+                            <h1>All Reviews<h1>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Rating</th>
+                    <th>User</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody class="collection review-table-body">
+                <%= render partial: 'reviews/partials/review_rows', locals: {reviews: @reviews} %>
+            </tbody>
+    <% end %>
+</table>
+
 <script>
     loadRatings();
 </script>

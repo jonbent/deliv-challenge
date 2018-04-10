@@ -1,9 +1,52 @@
 
 <% reviews.each do |r| %>
-    <tr id="review--<%=r.id%>" class="collection-item review-item">
-        <td><div class="valign-wrapper"><i class="material-icons details-down">details</i></div></td>
-        <td><div class="review-rating" value="<%= r.rating %>"></div></td>
-        <td><div><%= r.email %></div></td>
-        <td><div><%= r.created_at.strftime("%m-%d-%Y") %></div></td>
-    </tr>
+        
+        <tr id="review--<%=r.id%>" class="review-item">
+            <td><div class="valign-wrapper"><%= r.comment.presence ? sanitize('<i class="material-icons details-down">details</i>') : '' %></div></td>
+            <td><div class="review-rating-ue" value="<%= r.rating %>"></div></td>
+            <td><div><%= r.email %></div></td>
+            <td><div><%= r.created_at.strftime("%m-%d-%Y") %></div></td>
+        </tr>
+        <tr class="review-bot review-item">
+            <td colspan=4>
+                
+                <% if r.comment.presence %>
+                    <div id="review-details--<%=r.id%>" class="hide review-item-details">
+                        <div class='row'>
+                            <div class='col s6 vehicle-info'>
+                                <div class='row'>
+                                    <div class='col s6'>
+                                    <% p r %>
+                                        Make: <%= r.vehicle.make %>
+                                    </div>    
+                                    <div class='col s6'>
+                                        Model: <%= r.vehicle.model %>
+                                    </div>    
+                                </div>    
+                                <div class='row'>
+                                    <div class='col s6'>
+                                        Year: <%= r.vehicle.year %>
+                                    </div>    
+                                    <div class='col s6'>
+                                        VIN: <%= r.vehicle.vin %>
+                                    </div>    
+                                </div>    
+                            </div>    
+                            <div class='col s6'>
+                                <div class='row'>
+                                    <div class='col s12'>
+                                        Comment:
+                                    </div>    
+                                </div>
+                                <div class='row'>
+                                    <div class='col s12'>
+                                        <%= r.comment %>        
+                                    </div>    
+                                </div>    
+                            </div>    
+                        </div>
+                    </div>
+                <% end %>
+            </td>
+        </tr>
 <% end %>
