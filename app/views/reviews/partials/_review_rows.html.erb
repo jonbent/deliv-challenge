@@ -46,8 +46,11 @@
                                 </div>    
                             </div>
                             <% if logged_in? && r.current_users?(user_email) %>
-                                <div class='input-field col s12'>
-                                    <%= link_to sanitize('<i class="material-icons right">send</i>' + "Edit"), edit_vehicle_review_path(r.vehicle, r), class: 'btn waves-effect waves-light' %>
+                                <div class='col s6'>
+                                    <%= link_to sanitize('<i class="material-icons right">send</i>' + "Edit"), edit_vehicle_review_path(r.vehicle, r), class: 'btn waves-effect waves-light full-btn' %>
+                                </div>
+                                <div class='col s6'>
+                                    <%= link_to sanitize('<i class="material-icons right">delete</i>' + "Delete"), vehicle_review_path(r.vehicle, r), class: 'btn waves-effect waves-light full-btn red darken-2', method: :delete %>
                                 </div>
                             <% end %>
                         </div>

@@ -80,7 +80,8 @@ $(document).on('turbolinks:load', function () {
         var url = window.location.origin + '/vehicles';
         var data = new Object;
         var method = 'GET';
-        data.search_string = $(this).html().toLowerCase();
+        var that = this;
+        data.search_string = $(this).attr('value');
         if (currentSearch == data.search_string && !searchVehicleBackwards){
             data.backwards = "true";
             searchVehicleBackwards = true;
@@ -94,7 +95,13 @@ $(document).on('turbolinks:load', function () {
             data: data,
             method: method
         }).done(function(res){
+            $('.v-sort-info').html('')
             $('.v-container').html(res);
+            if (searchVehicleBackwards){
+                $(that).find('.v-sort-info').html('<i class="material-icons inline-icon">arrow_drop_up</i>');
+            } else {
+                $(that).find('.v-sort-info').html('<i class="material-icons inline-icon">arrow_drop_down</i>');
+            }
         })
     })
 

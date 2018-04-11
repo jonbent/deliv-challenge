@@ -60,7 +60,7 @@
     background-color: #424651;
     color: #4db6ac;
 }
-.col.s12 > .btn {
+.full-btn {
    width: 100%;
 }
 .required-explain{
@@ -75,4 +75,8 @@
 .vehicle-info {
     // border-radius: 1px; /* Border on the of review info */
     border-right: 1px solid rgba(0,0,0,0.3);
+}
+.inline-icon {
+   vertical-align: bottom;
+   font-size: 18px !important;
 }
