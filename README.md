@@ -30,4 +30,4 @@
   * passenger start
   
 * Deployment instructions
-    * rvmsudo bundle exec passenger start RAILS_ENV=production
+    * rvmsudo bundle exec passenger start
