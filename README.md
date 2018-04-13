@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Car Review site made for challenge with Deliv
 
 * Ruby version
+  * 2.3.1
+* Rails
+  * 5.1.6
 
 * System dependencies
+  * ENVVARS / .env file
+    * __AUTH0_CLIENT_ID__
+    * __AUTH0_CLIENT_SECRET__
+    * __AUTH0_NAMESPACE__
+    * SECRET_KEY_BASE
 
-* Configuration
 
-* Database creation
-
-* Database initialization
+* Database creation / initialization
+  * bundle
+  * development
+    * rails db:create
+    * rails db:migrate
+    * rails db:seed
+  * production
+    * requires postgres to be setup correctly
+    * rails db:create
+    * rails db:migrate RAILS_ENV=production
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
+  * create Passengerfile.json
+    * include port, demonize, environment, user, and envvars
+  * passenger start
+  
 * Deployment instructions
-
+    rvmsudo passenger start RAILS_ENV=production
 * ...
