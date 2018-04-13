@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: deliv-challenge_production
-  username: deliv-challenge
-  password: <%= ENV['DELIV-CHALLENGE_DATABASE_PASSWORD'] %>
+  username: deliv
+  password: <%= ENV['DELIV_DATABASE_PASSWORD'] %>
