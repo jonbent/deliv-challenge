@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DelivChallenge</title>
+    <title>We Review cars with a passion</title>
     <%= csrf_meta_tags %>
     <%# jquery %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,9 +23,9 @@
   </head>
   <body>
     <div class="navbar-fixed">
-      <nav>
+      <nav class="indigo lighten-1">
         <div class="nav-wrapper">
-          <a class="brand-logo left" href="/">Cars R Us</a>
+          <a class="brand-logo left" href="/">Car Sham</a>
           <ul id="nav-mobile" class="right">
             <li><%= link_to 'Reviews', reviews_path(vehicle_id: nil) %></li>
             <li><a href="/vehicles">Vehicles</a></li>
