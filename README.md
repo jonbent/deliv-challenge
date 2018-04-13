@@ -1,10 +1,8 @@
 # README
 
-Car Review site made for challenge with Deliv
-
 * Ruby version
   * 2.3.1
-* Rails
+* Rails version
   * 5.1.6
 
 * System dependencies
@@ -23,7 +21,7 @@ Car Review site made for challenge with Deliv
     * rails db:seed
   * production
     * requires postgres to be setup correctly
-    * rails db:create
+    * rails db:create RAILS_ENV=production
     * rails db:migrate RAILS_ENV=production
 
 * How to run the test suite
@@ -32,4 +30,4 @@ Car Review site made for challenge with Deliv
   * passenger start
   
 * Deployment instructions
-    * rvmsudo passenger start RAILS_ENV=production
+    * rvmsudo bundle exec passenger start RAILS_ENV=production
