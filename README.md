@@ -33,4 +33,3 @@ Car Review site made for challenge with Deliv
   
 * Deployment instructions
     rvmsudo passenger start RAILS_ENV=production
-* ...
