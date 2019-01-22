@@ -1,4 +1,26 @@
 # README
+* CHALLENGE
+
+1. You must use 3rd party APIs to produce a list of vehicles.
+
+    a. You should be able to sort by Year, Make, Model, VIN number, and Size*
+
+2. You should be able to create a review in your database for any vehicle in the list.
+
+    a. Review must include a user email
+
+    b. Review must include the date
+
+    c. Review must include a rating (x out of y)
+
+    d. Review may optionally contain a comment
+
+3. You should be able to view any vehicle's reviews
+
+4. You should be able to view all reviews in the database
+
+5. Write tests/specs in your preferred test library
+
 
 * Ruby version
   * 2.3.1
