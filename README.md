@@ -3,7 +3,7 @@
 
 1. You must use 3rd party APIs to produce a list of vehicles.
 
-    a. You should be able to sort by Year, Make, Model, VIN number, and Size*
+    a. You should be able to sort by Year, Make, Model, VIN number, and Size (unable to find API that fit this description).
 
 2. You should be able to create a review in your database for any vehicle in the list.
 
