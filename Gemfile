@@ -64,6 +64,7 @@ gem 'vinbot'
 # auth0
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-auth0', '~> 2.0.0'
+gem "omniauth-rails_csrf_protection"
 
 # materialize
 gem 'materialize-sass', '~> 1.0.0.beta'
