@@ -42,7 +42,7 @@ group :development, :test do
   # rspec testing
   gem "rspec-rails"
   #environment variables
-  gem 'dotenv-rails', groups: [:development, :test]
+  gem 'dotenv-rails'
 end
 
 group :development do
