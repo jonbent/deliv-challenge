@@ -4,7 +4,6 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-# p Rails.env
 if ['development', 'test'].include? Rails.env
   Dotenv::Railtie.load
 end
