@@ -62,7 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'vinbot'
 
 # auth0
-gem 'omniauth', '~> 1.6.1'
+gem 'omniauth', '~> 1.9.2'
 gem 'omniauth-auth0', '~> 2.0.0'
 gem "omniauth-rails_csrf_protection"
 
